@@ -4,11 +4,49 @@
 @{
 }
 <html>
+    <head>
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    </head>
     <body>
         Carnet: @ViewBag.ci  <br>
         Nombre: @ViewBag.nombre  <br>
         Casado: @ViewBag.casado  <br>
         Estatura: @ViewBag.estatura  <br>
         Fecha de contrato: @ViewBag.fecha_contratacion.ToString("dd/MM/yyyy") <br>
+
+        <div class="container">
+            <div class="row">
+            <div class="col-4">
+            </div>
+                <div class="col-4">
+                    <table class="table table-dark">
+                        <tr>
+                            <td>CI</td>
+                            <td>@ViewBag.empleado.ci</td>
+                        </tr>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>@ViewBag.empleado.nombre</td>
+                        </tr>
+                        <tr>
+                            <td>Estatura</td>
+                            <td>@ViewBag.empleado.estatura</td>
+                        </tr>
+                        <tr>
+                            <td>Peso</td>
+                            <td>@ViewBag.empleado.peso</td>
+                        </tr>
+                    <tr>
+                        <td>Foto</td>
+                        <td><img src="~/imagenes/@ViewBag.empleado.foto" width="100px" height="100px"></td>
+                    </tr>
+                    <tr>
+                        <td>Indice Masa corporal</td>
+                        <td>@(ViewBag.empleado.peso / (ViewBag.empleado.estatura * ViewBag.empleado.estatura))</td>
+                    </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
