@@ -13,7 +13,15 @@
         Casado: @ViewBag.casado  <br>
         Estatura: @ViewBag.estatura  <br>
         Fecha de contrato: @ViewBag.fecha_contratacion.ToString("dd/MM/yyyy") <br>
-
+        <br>
+        <a asp-controller="empleado" asp-action="editar" asp-route-ci="123" > Enviando un parámetro </a>
+        <br>
+        <a asp-controller="empleado" asp-action="editar2" asp-route-ci="333" asp-route-apellido="Perales" > Enviando dos parámetros </a>
+        <br>
+        <a asp-controller="empleado" asp-action="editar3" asp-route-ci="321" > Enviando 1 parámetro por Query String </a>
+        <br />
+        <a asp-controller="empleado" asp-action="editar4" asp-route-ci="555" asp-route-ap="Sosa" > Enviando 2 parámetros por Query String </a>
+        <br />
         <div class="container">
             <div class="row">
             <div class="col-4">

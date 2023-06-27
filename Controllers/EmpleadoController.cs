@@ -26,7 +26,8 @@ namespace Clase_asp_net.Controllers
             ViewBag.fecha_contratacion = DateTime.Now;
 
             //Pasandole un objeto Empleado
-            var emp = new Empreado { 
+            var emp = new Empreado
+            {
                 ci = 3301,
                 nombre = "Pepe Perales",
                 estatura = 1.82,
@@ -65,7 +66,8 @@ namespace Clase_asp_net.Controllers
         }
         [Route("detalles")]
         [Route("detallazos")]
-        public IActionResult Ejemplo1() {
+        public IActionResult Ejemplo1()
+        {
             ViewBag.variable1 = configuration["Texto"];
             ViewBag.variable2 = configuration["VariablesConfig:var1"];
             ViewBag.variable3 = configuration["VariablesConfig:var2"];
@@ -74,6 +76,42 @@ namespace Clase_asp_net.Controllers
             ViewBag.variable6 = configuration["VariablesConfig:varx:advanced:extremo"];
 
             return View("Configuraciones");
+        }
+        [Route("principal")]
+        public IActionResult EjemploParametroPrincipal()
+        {
+            return View();
+        }
+
+        [Route("editar/{ci}")]
+        public IActionResult EjemploParametro(int ci)
+        {
+            ViewBag.carnet = ci;
+            return View();
+        }
+
+        [Route("editar2/{ci}/{apellido}")]
+        public IActionResult EjemploParametro2(int ci, string apellido)
+        {
+            ViewBag.carnet = ci;
+            ViewBag.apellido = apellido;
+            return View("EjemploParametro");
+        }
+
+        //Query String
+        [Route("editar3")]
+        public IActionResult EjemploParametro3([FromQuery(Name = "ci")]int ci)
+        {
+            ViewBag.carnet = ci;
+            return View("EjemploParametro");
+        }
+
+        [Route("editar4")]
+        public IActionResult EjemploParametro4([FromQuery(Name = "ci")] int ci, [FromQuery(Name = "ap")] string apellido)
+        {
+            ViewBag.carnet = ci;
+            ViewBag.apellido = apellido;
+            return View("EjemploParametro");
         }
     }
 }
