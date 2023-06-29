@@ -5,6 +5,7 @@ namespace Clase_asp_net.Controllers
 {
     public class CuentaController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             var cuentaModelView = new CuentaModelView();
@@ -37,12 +38,25 @@ namespace Clase_asp_net.Controllers
             };
             var c = new List<Cargo>() { 
                 new Cargo{ id= "c01", nombre = "Pasante"},
-                new Cargo{ id= "c01", nombre = "Auxiliar de desarrollo"},
-                new Cargo{ id= "c01", nombre = "Programador senior"},
-                new Cargo{ id= "c01", nombre = "Jefe de Dpto."}
+                new Cargo{ id= "c02", nombre = "Auxiliar de desarrollo"},
+                new Cargo{ id= "c03", nombre = "Programador senior"},
+                new Cargo{ id= "c04", nombre = "Jefe de Dpto."}
             };
             cuentaModelView.cargos = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(c,"id", "nombre");
             return View("Index",cuentaModelView);
+        }
+        [HttpPost]
+        public IActionResult Registro(CuentaModelView cuentaModelView, List<Lenguaje> lenguajes)
+        {
+            cuentaModelView.cuenta.lenguajes = new List<string>();
+            foreach(var l in lenguajes)
+            {
+                if (l.tickeado)
+                    cuentaModelView.cuenta.lenguajes.Add(l.id);
+            }
+
+            ViewBag.cuenta = cuentaModelView.cuenta;
+            return View("Registrado");
         }
     }
 }
