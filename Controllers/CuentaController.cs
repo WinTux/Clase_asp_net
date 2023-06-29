@@ -5,6 +5,12 @@ namespace Clase_asp_net.Controllers
 {
     public class CuentaController : Controller
     {
+        private IWebHostEnvironment webHostEnvironment;
+
+        public CuentaController(IWebHostEnvironment webHostEnvironment)
+        {
+            this.webHostEnvironment = webHostEnvironment;
+        }
         [HttpGet]
         public IActionResult Index()
         {
@@ -46,13 +52,26 @@ namespace Clase_asp_net.Controllers
             return View("Index",cuentaModelView);
         }
         [HttpPost]
-        public IActionResult Registro(CuentaModelView cuentaModelView, List<Lenguaje> lenguajes)
+        public IActionResult Registro(CuentaModelView cuentaModelView, List<Lenguaje> lenguajes, IFormFile foto)
         {
             cuentaModelView.cuenta.lenguajes = new List<string>();
             foreach(var l in lenguajes)
             {
                 if (l.tickeado)
                     cuentaModelView.cuenta.lenguajes.Add(l.id);
+            }
+
+            //Esto es para el manejo de archivo
+            if(foto == null || foto.Length == 0)
+            {
+                return Content("Foto no válida. Por favor aguregue una foto de perfil.");
+            }
+            else
+            {
+                var ruta = Path.Combine(webHostEnvironment.WebRootPath, "imagenes", foto.FileName);
+                var flujo = new FileStream(ruta, FileMode.Create);
+                foto.CopyToAsync(flujo);
+                cuentaModelView.cuenta.foto = foto.FileName;
             }
 
             ViewBag.cuenta = cuentaModelView.cuenta;

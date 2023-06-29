@@ -10,5 +10,6 @@
         public string genero { get; set; }
         public List<string> lenguajes { get; set; }
         public string cargo { get; set; }
+        public string foto { get; set; }
     }
 }
