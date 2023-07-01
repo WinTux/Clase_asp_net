@@ -12,6 +12,15 @@
                 
                     <table class="table">
                         <tr>
+                            <td></td>
+                            <td>
+                            @foreach(var foto in ViewBag.cuenta.fotos)
+                            {
+                                <img src="~/imagenes/@foto" width="100"><br >
+                            }
+                        </td>
+                        </tr>
+                        <tr>
                             <td>Usuario</td>
                             <td>
                                 @ViewBag.cuenta.usuario

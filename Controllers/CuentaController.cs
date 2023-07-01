@@ -52,7 +52,7 @@ namespace Clase_asp_net.Controllers
             return View("Index",cuentaModelView);
         }
         [HttpPost]
-        public IActionResult Registro(CuentaModelView cuentaModelView, List<Lenguaje> lenguajes, IFormFile foto)
+        public IActionResult Registro(CuentaModelView cuentaModelView, List<Lenguaje> lenguajes, IFormFile[] fotos)
         {
             cuentaModelView.cuenta.lenguajes = new List<string>();
             foreach(var l in lenguajes)
@@ -62,16 +62,20 @@ namespace Clase_asp_net.Controllers
             }
 
             //Esto es para el manejo de archivo
-            if(foto == null || foto.Length == 0)
+            if(fotos == null || fotos.Length == 0)
             {
-                return Content("Foto no válida. Por favor aguregue una foto de perfil.");
+                return Content("Fotos no válidas. Por favor aguregue unas fotos de perfil.");
             }
             else
             {
-                var ruta = Path.Combine(webHostEnvironment.WebRootPath, "imagenes", foto.FileName);
-                var flujo = new FileStream(ruta, FileMode.Create);
-                foto.CopyToAsync(flujo);
-                cuentaModelView.cuenta.foto = foto.FileName;
+                cuentaModelView.cuenta.fotos = new List<string>();
+                foreach (IFormFile foto in fotos)
+                {
+                    var ruta = Path.Combine(webHostEnvironment.WebRootPath, "imagenes", foto.FileName);
+                    var flujo = new FileStream(ruta, FileMode.Create);
+                    foto.CopyToAsync(flujo);
+                    cuentaModelView.cuenta.fotos.Add(foto.FileName);
+                }
             }
 
             ViewBag.cuenta = cuentaModelView.cuenta;
