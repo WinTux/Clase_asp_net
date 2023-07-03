@@ -54,6 +54,18 @@ namespace Clase_asp_net.Controllers
         [HttpPost]
         public IActionResult Registro(CuentaModelView cuentaModelView, List<Lenguaje> lenguajes, IFormFile[] fotos)
         {
+            if (!ModelState.IsValid)
+            {
+                var c = new List<Cargo>() {
+                new Cargo{ id= "c01", nombre = "Pasante"},
+                new Cargo{ id= "c02", nombre = "Auxiliar de desarrollo"},
+                new Cargo{ id= "c03", nombre = "Programador senior"},
+                new Cargo{ id= "c04", nombre = "Jefe de Dpto."}
+                };
+                cuentaModelView.cargos = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(c, "id", "nombre");
+                return View("Index", cuentaModelView);
+            }
+
             cuentaModelView.cuenta.lenguajes = new List<string>();
             foreach(var l in lenguajes)
             {

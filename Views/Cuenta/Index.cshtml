@@ -17,11 +17,17 @@
                             <td>
                                 <input asp-for="cuenta.usuario">
                             </td>
+                            <td>
+                                <span asp-validation-for="cuenta.usuario"></span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Password</td>
                             <td>
                                 <input type="password" asp-for="cuenta.password">
+                            </td>
+                            <td>
+                                <span asp-validation-for="cuenta.password"></span>
                             </td>
                         </tr>
                         <tr>
@@ -29,11 +35,17 @@
                             <td>
                                 <textarea cols="30" rows="5" asp-for="cuenta.descripcion"></textarea>
                             </td>
+                            <td>
+                                <span asp-validation-for="cuenta.descripcion"></span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Disponible</td>
                             <td>
                                 <input type="checkbox" asp-for="cuenta.disponible">
+                            </td>
+                            <td>
+                                <span asp-validation-for="cuenta.disponible"></span>
                             </td>
                         </tr>
                         <tr>
@@ -42,6 +54,9 @@
                                 <input type="radio" value="f" asp-for="cuenta.genero">Femenino
                                 <br>
                                 <input type="radio" value="m" asp-for="cuenta.genero">Masculino
+                            </td>
+                            <td>
+                                <span asp-validation-for="cuenta.genero"></span>
                             </td>
                         </tr>
                         <tr>
@@ -62,11 +77,41 @@
                             <td>
                                 <select asp-for="cuenta.cargo" asp-items="@Model.cargos"></select>
                             </td>
+                            <td>
+                                <span asp-validation-for="cuenta.cargo"></span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Foto de perfil</td>
                             <td>
                                 <input type="file" name="fotos" multiple="multiple">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Edad</td>
+                            <td>
+                                <input asp-for="cuenta.edad">
+                            </td>
+                            <td>
+                                <span asp-validation-for="cuenta.edad"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>email</td>
+                            <td>
+                                <input asp-for="cuenta.email">
+                            </td>
+                            <td>
+                                <span asp-validation-for="cuenta.email"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sitio web</td>
+                            <td>
+                                <input asp-for="cuenta.sitioweb">
+                            </td>
+                            <td>
+                                <span asp-validation-for="cuenta.sitioweb"></span>
                             </td>
                         </tr>
                         <tr>
