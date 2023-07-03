@@ -9,6 +9,7 @@ namespace Clase_asp_net
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSession();
 
             var app = builder.Build();
 
@@ -24,6 +25,8 @@ namespace Clase_asp_net
             app.UseAuthorization();
 
             app.MapRazorPages();
+
+            app.UseSession();
 
             app.UseEndpoints( endpoints => {
                 endpoints.MapControllerRoute(
