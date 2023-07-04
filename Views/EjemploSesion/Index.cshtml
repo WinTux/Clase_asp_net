@@ -1,0 +1,44 @@
+﻿@using Clase_asp_net.Models;
+@using Clase_asp_net.Extra;
+<html>
+    <head>
+        <title>Sesiones</title>
+    </head>
+    <body>
+        <h3>Valores rescatados de sesión (primitivas)</h3>
+        Edad: @Context.Session.GetInt32("edad")
+        <br>
+        Nombre: @Context.Session.GetString("nombre")
+
+        <h3>Valores rescatados de sesión (producto)</h3>
+        @{
+            Producto p = ConversorParaSesion.ConvertirACsharp<Producto>(Context.Session, "prod");
+        }
+        ID: @p.id
+        <br>
+        Nombre: @p.nombre
+        <br>
+        Precio: @p.precio
+        <br>
+        <h3>Valores rescatados de sesión (productos)</h3>
+    @{
+        List<Producto> productos = ConversorParaSesion.ConvertirACsharp<List<Producto>>(Context.Session, "prods");
+    }
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+        </tr>
+        @foreach (var producto in productos)
+        {
+             <tr>
+                 <td>@producto.id</td>
+                 <td>@producto.nombre</td>
+                 <td>@producto.precio</td>
+             </tr>
+        }
+        </table>
+
+    </body>
+</html>
