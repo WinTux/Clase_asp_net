@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.titulo = "Anidado II";
+    Layout = "~/Views/Shared/_SupremoLayout.cshtml";
+}
+<a asp-controller="EjemploLayouts" asp-action="Anidado2Menu1"> Menu 1</a> /
+<a asp-controller="EjemploLayouts" asp-action="Anidado2Menu2"> Menu 2</a> /
+<a asp-controller="EjemploLayouts" asp-action="Anidado2Menu3"> Menu 3</a>
+<br>
+@RenderBody()

@@ -1,0 +1,16 @@
+﻿<html>
+<head>
+    <title>@ViewBag.titulo</title>
+</head>
+<body>
+    <a asp-controller="EjemploLayouts" asp-action="Anidado1">Ejemplo anidad 1</a> /
+    <a asp-controller="EjemploLayouts" asp-action="Anidado2">Ejemplo anidad 2</a> /
+    <a asp-controller="EjemploLayouts" asp-action="Anidado3">Ejemplo anidad 3</a>
+    <br>
+    <br>
+    @RenderBody()
+    <br>
+    <br>
+    Empresas Pepe y asociados (c)
+</body>
+</html>
