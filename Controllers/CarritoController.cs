@@ -55,5 +55,14 @@ namespace Clase_asp_net.Controllers
                     return i;
             return -1;
         }
+        [Route("EliminarItem/{id}")]
+        public IActionResult EliminarItem(string id)
+        {
+            List<Item> carrito = ConversorParaSesion.ConvertirACsharp<List<Item>>(HttpContext.Session, "carrito");
+            int indice = existe(id);
+            carrito.RemoveAt(indice);
+            ConversorParaSesion.ConvertirAjson(HttpContext.Session, "carrito", carrito);
+            return RedirectToAction("Index");
+        }
     }
 }
