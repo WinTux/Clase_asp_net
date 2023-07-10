@@ -9,7 +9,7 @@ namespace Clase_asp_net.Models
         [Key]
         public string id { get; set; }
         public string nombre { get; set; }
-        public double precio { get; set; }
+        public decimal precio { get; set; }
         public string foto { get; set; }
     }
 }

@@ -9,19 +9,19 @@
                 new Producto {
                     id = "prod01",
                     nombre = "Queso",
-                    precio = 15,
+                    precio = 15M,
                     foto = "queso.jpg"
                 },
                 new Producto {
                     id = "prod02",
                     nombre = "Atún",
-                    precio = 10.5,
+                    precio = 10.5M,
                     foto = "atun.jpg"
                 },
                 new Producto {
                     id = "prod03",
                     nombre = "Arroz",
-                    precio = 19.2,
+                    precio = 19.2M,
                     foto = "uno.jpeg"
                 }
             };

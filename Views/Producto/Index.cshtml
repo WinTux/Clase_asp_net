@@ -2,10 +2,16 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<table>
+<table border="1" class="table table-warning">
+    <tr>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>PRECIO</th>
+        <th>FOTO</th>
+    </tr>
     @foreach(var p in ViewBag.productos)
     {
         
@@ -13,6 +19,7 @@
             <td>@p.id</td>
             <td>@p.nombre</td>
             <td>@p.precio</td>
+            <td><img src="~/imagenes/@p.foto" height="100"></td>
         </tr>
     }
 

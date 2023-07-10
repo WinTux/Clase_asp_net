@@ -14,7 +14,7 @@ namespace Clase_asp_net.Controllers
             Producto producto = new Producto { 
                 id = "prod01",
                 nombre = "Atún",
-                precio = 10.5
+                precio = 10.5M
             };
 
             ConversorParaSesion.ConvertirAjson(HttpContext.Session, "prod", producto);
@@ -29,12 +29,12 @@ namespace Clase_asp_net.Controllers
                 new Producto {
                 id = "prod02",
                 nombre = "Atún",
-                precio = 10.5
+                precio = 10.5M
                 },
                 new Producto {
                 id = "prod03",
                 nombre = "Arroz",
-                precio = 19.2
+                precio = 19.2M
             }
             };
             ConversorParaSesion.ConvertirAjson(HttpContext.Session, "prods", productos);
