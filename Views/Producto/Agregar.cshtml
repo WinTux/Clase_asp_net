@@ -1,0 +1,39 @@
+﻿@model Clase_asp_net.Models.Producto
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<h3>Registro de nuevo producto</h3>
+<form asp-controller="Producto" asp-action="Agregar" method="post">
+    <table class="table table-secondary">
+        <tr>
+            <td>Codigo</td>
+            <td>
+                <input type="text" asp-for="id">
+            </td>
+        </tr>
+        <tr>
+            <td>Nombre</td>
+            <td>
+                <input type="text" asp-for="nombre">
+            </td>
+        </tr>
+        <tr>
+            <td>Precio</td>
+            <td>
+                <input type="text" asp-for="precio">
+            </td>
+        </tr>
+        <tr>
+            <td>Foto</td>
+            <td>
+                <input type="text" asp-for="foto">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" class="btn btn-primary">
+            </td>
+        </tr>
+    </table>
+</form>
