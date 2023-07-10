@@ -1,3 +1,6 @@
+using Clase_asp_net.Extra;
+using Microsoft.EntityFrameworkCore;
+
 namespace Clase_asp_net
 {
     public class Program
@@ -10,6 +13,10 @@ namespace Clase_asp_net
             builder.Services.AddRazorPages();
             builder.Services.AddControllersWithViews();
             builder.Services.AddSession();
+
+            //Conexion a DDBB
+            string cadenaDeConexion = builder.Configuration.GetConnectionString("MiConexion");
+            builder.Services.AddDbContext<DDBBContext>(op => op.UseSqlServer(cadenaDeConexion));
 
             var app = builder.Build();
 
