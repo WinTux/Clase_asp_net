@@ -6,7 +6,7 @@ namespace Clase_asp_net.Controllers
 {
     public class ProductoController : Controller
     {
-        private DDBBContext ddbb;
+        private readonly DDBBContext ddbb;
         public ProductoController(DDBBContext ddbb)
         {
             this.ddbb = ddbb;
@@ -43,6 +43,15 @@ namespace Clase_asp_net.Controllers
         {
             // Update
             ddbb.Entry(producto).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            ddbb.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Eliminar(string id)
+        {
+            // Delete
+            ddbb.Productos.Remove(ddbb.Productos.Find(id));
             ddbb.SaveChanges();
             return RedirectToAction("Index");
         }

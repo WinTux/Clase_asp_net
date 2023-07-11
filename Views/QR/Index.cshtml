@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<h3>Generando un QR</h3>
+<form asp-controller="QR" asp-action="Generar" method="post">
+    <input type="text" placeholder="id de un producto" name="productoid" value="@ViewBag.productoid">
+    <input type="submit" value="Generar">
+</form>
+
+@if(@ViewBag.productoid != null)
+{
+    <codigoqr contenido="@ViewBag.productoid" ancho="200" alto="200" />
+}
